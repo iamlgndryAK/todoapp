@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+</head>
+<body>
+    <h1>Add Tasks</h1>
+    <form action="/show_list" method="post">
+        <div>
+            <input type="text" name="title" placeholder="Enter your task...">
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    <div>
+        <h1>Your Tasks:</h1>
+        {% for i in todo_list %}
+        <div>
+            <h2><input type="checkbox" name="check" id="{{ i }}" value="{{ i }}"
+                   onchange="check_box(''{{ i }})">{{ i }}</h2>
+
+            <a style="color: red" href="{{url_for('delete', index=todo_list.index(i)) }}">
+            <input type="submit" value="Delete Task">
+            </a>
+
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
